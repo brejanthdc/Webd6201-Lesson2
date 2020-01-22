@@ -46,6 +46,55 @@
        h2.addEventListener("mouseover",MouseOver);
 
        h2.addEventListener("mouseout",MouseOut);
+       // creating a new element)paragraph tag
+       let firstParagraph = document.createElement("p");
+       // configuring the new element
+       firstParagraph.textContent ="This is a very short paragraph";
+       // get a reference to the parent node in this case h2
+       let parentDiv = h2.parentNode;
+       // get  a reference to the first h1 tag
+       let h1 = document.getElementsByTagName("h1")[0];
+       // parent of node u want, what you want to insert, which node u want
+       parentDiv.insertBefore(firstParagraph,h2);
+
+     //  copy another element in this case firstParagraph
+       let anotherParagraph = firstParagraph.cloneNode(true);
+       // test of the copy
+       h1.parentNode.insertBefore(anotherParagraph,h1);
+
+        // use console log to find out information about code in the console
+//console.log(parentDiv.lastChild);
+       //parentDiv.removeChild(parentDiv.lastChild);
+
+       for (let index =0; index < parentDiv.childNodes.length; index++)
+       {
+           let childNodes = parentDiv.childNodes[index]
+        parentDiv.removeChild(childNodes);
+        //first two childs not removed because parentdiv happens after h2 tag
+       }
+       
+       let ul = document.getElementsByTagName("ul")[0];
+       //console.log(ul);
+//  ul is main element tag,  li is tag within ul
+      /*  ul.childNodes.forEach(li => {
+           
+      
+           //console.log(li);
+           li.remove;
+       });
+ */
+// This wont delete all of them becase un.children.length becomes dynamic meaning as it removes one the array size changes
+       for (let index =0; index < ul.children.length ; index++)
+       {
+           let child = ul.children[index];
+           // This wont delete all of them becase un.children.length becomes dynamic meaning as it removes one the array size changes
+           //child.remove();
+           child.style.display = "none";
+       }
+
+
+
+
     }
 
     window.addEventListener("load",Start);
